@@ -38,33 +38,42 @@
         {{ price }}<span style="font-family: 'Gotham Book', sans-serif">m</span>
       </p>
       <div class="d-flex justify-content-between">
-        <p
-          style="
-            font-family: 'Gotham-medium', sans-serif;
-            font-size: 1.125em;
-            letter-spacing: -0.05em;
-          "
-        >
-          3 <span style="font-family: 'Gotham', sans-serif">beds</span>
-        </p>
-        <p
-          style="
-            font-family: 'Gotham-medium', sans-serif;
-            font-size: 1.125em;
-            letter-spacing: -0.05em;
-          "
-        >
-          2 <span style="font-family: 'Gotham', sans-serif">baths</span>
-        </p>
-        <p
-          style="
-            font-family: 'Gotham-medium', sans-serif;
-            font-size: 1.125em;
-            letter-spacing: -0.05em;
-          "
-        >
-          1,307 <span style="font-family: 'Gotham', sans-serif">sqft</span>
-        </p>
+        <div class="text-center">
+          <b-img :src="require('@/assets/images/bed.svg')" />
+          <p
+            style="
+              font-family: 'Gotham-medium', sans-serif;
+              font-size: 1.125em;
+              letter-spacing: -0.05em;
+            "
+          >
+            3 <span style="font-family: 'Gotham', sans-serif">beds</span>
+          </p>
+        </div>
+        <div class="text-center">
+          <b-img :src="require('@/assets/images/bathroom.svg')" />
+          <p
+            style="
+              font-family: 'Gotham-medium', sans-serif;
+              font-size: 1.125em;
+              letter-spacing: -0.05em;
+            "
+          >
+            2 <span style="font-family: 'Gotham', sans-serif">baths</span>
+          </p>
+        </div>
+        <div class="text-center">
+          <b-img :src="require('@/assets/images/parking.svg')" />
+          <p
+            style="
+              font-family: 'Gotham-medium', sans-serif;
+              font-size: 1.125em;
+              letter-spacing: -0.05em;
+            "
+          >
+            1,307 <span style="font-family: 'Gotham', sans-serif">sqft</span>
+          </p>
+        </div>
       </div>
       <p style="letter-spacing: -0.05em; font-size: 1.125em">
         {{ address }}
