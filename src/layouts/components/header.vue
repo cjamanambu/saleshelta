@@ -117,14 +117,14 @@
                 Careers
               </a>
             </li>
-            <div class="register_btn">
-              <button v-if="loggedIn" class="btn">
-                <router-link to="/login">Login</router-link>
-              </button>
-              <button class="btn">
-                <router-link to="/signup">Sign up</router-link>
-              </button>
-            </div>
+            <!--            <div class="register_btn">-->
+            <!--              <button v-if="loggedIn" class="btn">-->
+            <!--                <router-link to="/login">Login</router-link>-->
+            <!--              </button>-->
+            <!--              <button class="btn">-->
+            <!--                <router-link to="/signup">Sign up</router-link>-->
+            <!--              </button>-->
+            <!--            </div>-->
           </ul>
         </form>
       </div>

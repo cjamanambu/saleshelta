@@ -1,0 +1,28 @@
+.secondary-btn {
+    border-radius: 10px;
+    background-color: #ffb100;
+    border-color: #ffb100;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    letter-spacing: -0.05em;
+}
+
+.secondary-btn:hover,
+.secondary-btn:active,
+.secondary-btn:focus,
+.secondary-btn:focus-visible {
+    background-color: #c48800;
+    border-color: #c48800;
+    color: #ffffff;
+    box-shadow: none;
+    outline: none;
+}
+.navbar-nav {
+    align-items: center;
+}
+.modal-content {
+    border-radius: 10px;
+}
+.modal-header {
+    border-bottom: none;
+}
