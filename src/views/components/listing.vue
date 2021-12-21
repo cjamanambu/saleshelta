@@ -7,8 +7,8 @@
     class="d-inline-block w-100"
     @click="
       $router.push({
-        name: 'PropertyDetails',
-        params: { property: 'propertyID' },
+        name: 'property-details',
+        params: { property: 'property-id' },
       })
     "
   >

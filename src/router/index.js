@@ -21,6 +21,15 @@ const routes = [
         "Search Results - Shelta Sales - Property Financing & Management Company",
     },
   },
+  {
+    path: "/property-details/:property",
+    name: "property-details",
+    component: () => import("@/views/property-detail/index"),
+    meta: {
+      title:
+        "Property Details - Shelta Sales - Property Financing & Management Company",
+    },
+  },
 ];
 
 const router = new VueRouter({
