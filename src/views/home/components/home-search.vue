@@ -88,7 +88,7 @@ export default {
   methods: {
     search() {
       this.$router.push({
-        name: "Search",
+        name: "search",
         query: { search_param: this.searchTerm },
       });
     },

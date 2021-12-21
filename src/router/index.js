@@ -8,6 +8,18 @@ const routes = [
     path: "/",
     name: "home",
     component: () => import("@/views/home/index"),
+    meta: {
+      title: "Shelta Sales - Property Financing & Management Company",
+    },
+  },
+  {
+    path: "/search",
+    name: "search",
+    component: () => import("@/views/search"),
+    meta: {
+      title:
+        "Search Results - Shelta Sales - Property Financing & Management Company",
+    },
   },
 ];
 
@@ -22,6 +34,11 @@ const router = new VueRouter({
       return { x: 0, y: 0, behavior: "smooth" };
     }
   },
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title;
+  return next();
 });
 
 export default router;

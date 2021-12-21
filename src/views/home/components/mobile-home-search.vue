@@ -23,13 +23,14 @@
       Advanced Search <i class="fa fa-chevron-down ml-2" />
     </p>
     <b-modal ref="advanced-search" hide-footer size="lg" centered>
-      <div class="advanced-search-form-mobile px-4 py-2">
+      <div class="advanced-search-form px-1 py-2">
         <b-form-group v-slot="{ ariaDescribedby }">
           <b-form-radio-group
             v-model="selected"
             :options="options"
             :aria-describedby="ariaDescribedby"
             name="radio-inline"
+            stacked
           />
         </b-form-group>
         <label class="mt-3" for="input-live">Location</label>
@@ -38,15 +39,15 @@
           placeholder="Location"
           class="advanced-form-input-mobile"
         />
+        <b-form-group class="mt-4">
+          <label for="type">Property Type</label>
+          <b-form-input
+            id="type"
+            placeholder="Property Type"
+            class="advanced-form-input-mobile"
+          />
+        </b-form-group>
         <div class="mt-4 d-flex">
-          <b-form-group class="w-100 mr-4">
-            <label for="type">Property Type</label>
-            <b-form-input
-              id="type"
-              placeholder="Property Type"
-              class="advanced-form-input-mobile"
-            />
-          </b-form-group>
           <b-form-group class="w-50 mr-2">
             <label for="type">Price</label>
             <b-form-input
@@ -91,7 +92,7 @@ export default {
   methods: {
     search() {
       this.$router.push({
-        name: "Search",
+        name: "search",
         query: { search_param: this.searchTerm },
       });
     },
@@ -180,5 +181,8 @@ export default {
   height: 3.75em;
   border-radius: 60px;
   padding-left: 2em;
+}
+.advanced-search-form {
+  font-family: "Gotham", sans-serif;
 }
 </style>
