@@ -30,8 +30,8 @@
         aria-label="Toggle navigation"
       >
         <!-- <span class="navbar-toggler-icon"></span> -->
-        <img src="@/assets/images/menu-icon.svg" alt="menu" />
-      </button>
+        <img src="@/assets/images/menu-icon.svg" alt="menu" /></button
+      ><a class="nav-link" :href="mainShelta + '/propertylist'"> Properties </a>
 
       <div
         class="collapse navbar-collapse justify-content-end"
@@ -41,37 +41,25 @@
           <ul class="navbar-nav m-auto">
             <li class="nav-item active">
               <a class="nav-link">
-                <router-link to="/shelta" class="router-link-active">
+                <router-link to="/" class="router-link-active">
                   Home
                 </router-link>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
-                <router-link to="/aboutus" class="router-link-active">
-                  About us
-                </router-link>
+              <a class="nav-link" :href="mainShelta + '/aboutus'"> About us </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" :href="mainShelta + '/contactus'">
+                Contact us
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
-                <router-link to="/contactus" class="router-link-active">
-                  Contact us
-                </router-link>
-              </a>
+              <a class="nav-link" :href="mainShelta + '/blogs'"> Blog </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
-                <router-link to="/blogs" class="router-link-active">
-                  Blog
-                </router-link>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link">
-                <router-link to="/propertylist" class="router-link-active">
-                  Properties
-                </router-link>
+              <a class="nav-link" :href="mainShelta + '/propertylist'">
+                Properties
               </a>
             </li>
             <li class="nav-item dropdown">
@@ -91,31 +79,21 @@
                 id="bg_color"
                 aria-labelledby="navbarDropdown"
               >
-                <a class="dropdown-item" href="#">
-                  <router-link to="/tenant" class="router-link-active">
-                    Tenant
-                  </router-link>
+                <a class="dropdown-item" :href="mainShelta + '/tenant'">
+                  Tenant
                 </a>
-                <a class="dropdown-item" href="#">
-                  <router-link to="/landlord" class="router-link-active">
-                    Landlord
-                  </router-link>
+                <a class="dropdown-item" :href="mainShelta + '/landlord'">
+                  Landlord
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Facility Management</a>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <router-link to="/faq" class="router-link-active">
-                  FAQs
-                </router-link>
-              </a>
+              <a class="nav-link" :href="mainShelta + '/faq'"> FAQs </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://myshelta.com/careers/">
-                Careers
-              </a>
+              <a class="nav-link" :href="mainShelta + '/careers'"> Careers </a>
             </li>
             <!--            <div class="register_btn">-->
             <!--              <button v-if="loggedIn" class="btn">-->
@@ -138,14 +116,11 @@ export default {
   data() {
     return {
       loggedIn: "",
+      mainShelta: "https://myshelta.com",
     };
   },
   mounted() {
-    if (localStorage.getItem("shelta")) {
-      this.loggedIn = false;
-    } else {
-      this.loggedIn = true;
-    }
+    this.loggedIn = !localStorage.getItem("shelta");
   },
   methods: {
     routeTo: function () {
