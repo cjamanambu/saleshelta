@@ -6,7 +6,7 @@
   >
     <p
       style="font-size: 2.25em; letter-spacing: -0.05em"
-      class="text-lg-left text-center mb-4"
+      class="text-lg-left text-center mb-5"
     >
       New Listings
     </p>
@@ -39,53 +39,6 @@ export default {
   data() {
     return {
       listings: [],
-      listingsDemo: [
-        {
-          id: 0,
-          oneimageurl: require("@/assets/images/listing-1.svg"),
-          businesstype: "5",
-          name: "Duplex",
-          price: "35000000",
-          address: "No 4 Amurie Babale street, Maitama....",
-          bedrooms: "2",
-          bathrooms: "2",
-          toilets: "2",
-        },
-        {
-          id: 1,
-          oneimageurl: require("@/assets/images/listing-2.svg"),
-          businesstype: "7",
-          name: "Semi-Detached Bungalow",
-          price: "35000000",
-          address: "No 4 Amurie Babale street, Maitama....",
-          bedrooms: "2",
-          bathrooms: "2",
-          toilets: "2",
-        },
-        {
-          id: 2,
-          oneimageurl: require("@/assets/images/listing-3.svg"),
-          businesstype: "7",
-          name: "Studio Apartment",
-          price: "8000000",
-          address: "No 4 Amurie Babale street, Maitama....",
-          bedrooms: "2",
-          bathrooms: "2",
-          toilets: "2",
-        },
-        {
-          id: 3,
-          oneimageurl: require("@/assets/images/listing-4.svg"),
-          businesstype: "6",
-          name: "Luxurious Villa",
-          price: "1900000",
-          oldPrice: "2500000",
-          address: "No 2 Musa yahaya street, Asokoro....",
-          bedrooms: "2",
-          bathrooms: "2",
-          toilets: "2",
-        },
-      ],
     };
   },
   mounted() {
@@ -93,14 +46,11 @@ export default {
   },
   methods: {
     fetchListings() {
-      this.apiGet(this.ROUTES.fetchProperties).then((res) => {
-        console.log(this.apiBusy);
+      this.apiGet(this.ROUTES.properties).then((res) => {
         if (res.data.success) {
           this.listings = res.data.properties;
-          console.log({ res });
         }
       });
-      console.log(this.apiBusy);
     },
   },
 };

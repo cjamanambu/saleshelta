@@ -5,5 +5,6 @@ export const API = axios.create({
 });
 
 export const ROUTES = {
-  fetchProperties: `fetchpropertiesforsale`,
+  properties: `fetchpropertiesforsale`,
+  blogs: `fetchblogsarticles`,
 };

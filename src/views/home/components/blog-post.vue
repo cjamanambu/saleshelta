@@ -1,16 +1,17 @@
 <template>
   <b-card
     id="blog-post"
-    :img-src="require('@/assets/images/blog-1.svg')"
+    :img-src="blog.images[0].imageurl"
     img-alt="Card image"
     img-top
     class="d-inline-block w-100"
+    img-height="240"
   >
     <p style="opacity: 0.8; letter-spacing: -0.05em">
-      The Property Brothers Spot a ‘Comical’ Feature No Home Should Ever Have...
+      {{ blog.title | stringToHtml }}
     </p>
     <div class="d-flex justify-content-between">
-      <p class="bp-action">Read article</p>
+      <p class="bp-action" @click="readArticle(blog.code)">Read article</p>
       <p class="bp-author d-flex">
         <b-img
           fluid
@@ -25,7 +26,32 @@
 </template>
 
 <script>
-export default {};
+const maxTitleLength = 35;
+export default {
+  props: {
+    blog: {
+      type: Object,
+      required: true,
+    },
+  },
+  methods: {
+    readArticle(code) {
+      location.href = `https://myshelta.com/blog/${code}`;
+    },
+  },
+  filters: {
+    stringToHtml(str) {
+      let parser = new DOMParser();
+      let doc = parser.parseFromString(str, "text/html");
+      let text = doc.body.innerText;
+      if (text.length > maxTitleLength) {
+        text = text.substring(0, maxTitleLength);
+        text += "...";
+      }
+      return text;
+    },
+  },
+};
 </script>
 
 <style>
