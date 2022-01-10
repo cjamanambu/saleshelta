@@ -5,12 +5,7 @@
     img-alt="Card image"
     img-top
     class="d-inline-block w-100"
-    @click="
-      $router.push({
-        name: 'property-details',
-        params: { property: 'property-id' },
-      })
-    "
+    @click="viewListing"
   >
     <b-card-text>
       <p style="font-size: 1.25em; letter-spacing: -0.05em">{{ name }}</p>
@@ -65,7 +60,7 @@
             <span style="font-family: 'Gotham', sans-serif">baths</span>
           </p>
         </div>
-        <div class="text-center">
+        <div clpropertyass="text-center">
           <b-img :src="require('@/assets/images/toilet.svg')" />
           <p
             style="
@@ -94,39 +89,42 @@
 <script>
 export default {
   props: {
-    imgSrc: {
-      required: true,
-    },
+    imgSrc: {},
     name: {
       type: String,
-      required: true,
     },
     type: {
       type: String,
-      required: true,
     },
     price: {
       type: String,
-      required: true,
     },
     oldPrice: {
       type: String,
     },
     address: {
       type: String,
-      required: true,
     },
     beds: {
       type: String,
-      required: true,
     },
     baths: {
       type: String,
-      required: true,
     },
     toilets: {
       type: String,
-      required: true,
+    },
+    pin: {},
+    listing: {
+      type: Object,
+    },
+  },
+  methods: {
+    viewListing() {
+      this.$router.push({
+        name: "property-details",
+        params: { property: this.listing.pin },
+      });
     },
   },
 };

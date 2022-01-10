@@ -22,6 +22,7 @@
           :toilets="listing.toilets"
           :address="listing.address"
           :old-price="listing.oldPrice"
+          :listing="listing"
           class="mb-lg-0 mb-5"
         />
       </b-col>

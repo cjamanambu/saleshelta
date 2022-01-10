@@ -7,4 +7,5 @@ export const API = axios.create({
 export const ROUTES = {
   properties: `fetchpropertiesforsale`,
   blogs: `fetchblogsarticles`,
+  property: `getpropertybypin`,
 };

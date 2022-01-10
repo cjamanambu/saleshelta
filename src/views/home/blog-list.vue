@@ -35,7 +35,6 @@ export default {
       this.apiGet(this.ROUTES.blogs).then((res) => {
         if (res.data.success) {
           this.blogs = res.data.blogs;
-          console.log({ res });
         }
       });
     },
