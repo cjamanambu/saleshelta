@@ -30,8 +30,8 @@
         aria-label="Toggle navigation"
       >
         <!-- <span class="navbar-toggler-icon"></span> -->
-        <img src="@/assets/images/menu-icon.svg" alt="menu" /></button
-      ><a class="nav-link" :href="mainShelta + '/propertylist'"> Properties </a>
+        <img src="@/assets/images/menu-icon.svg" alt="menu" />
+      </button>
 
       <div
         class="collapse navbar-collapse justify-content-end"

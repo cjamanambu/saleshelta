@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageLoader v-if="false" />
+    <PageLoader v-if="apiBusy" />
     <div v-else>
       <Header />
       <transition name="fade" mode="out-in">

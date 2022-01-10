@@ -2,6 +2,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import apiService from "@/services/api.service";
+import innerLoader from "@/layouts/components/inner-loader";
 
 import BootstrapVue from "bootstrap-vue";
 
@@ -14,10 +16,11 @@ Vue.component(
   "VueFontawesome",
   require("vue-fontawesome-icon/VueFontawesome.vue").default
 );
-
+Vue.component("Loader", innerLoader);
 Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue);
+Vue.mixin(apiService);
 
 import("@/assets/css/main.css");
 

@@ -11,11 +11,6 @@ import AppLayout from "./layouts/app-layout";
 
 export default {
   components: { AppLayout },
-  mounted() {
-    console.log("App mounted.");
-    const token = localStorage.getItem("token");
-    console.log(token);
-  },
 };
 </script>
 
