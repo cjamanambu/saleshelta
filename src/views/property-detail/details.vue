@@ -147,19 +147,12 @@
           {{ property.city + ", " + property.state }}
         </p>
         <div class="d-flex flex-wrap mb-5" style="max-width: 40em">
-          <!--          <DetailFeature-->
-          <!--            v-for="(feature, index) in property.facilities"-->
-          <!--            :key="index"-->
-          <!--            :feature="feature"-->
-          <!--          />-->
+          <DetailFeature
+            v-for="(feature, index) in facilities"
+            :key="index"
+            :feature="feature"
+          />
         </div>
-        <b-button
-          class="primary-btn px-5 mb-5"
-          style="border-radius: 40px"
-          @click="$refs['private-visit'].show()"
-        >
-          Request a private showing
-        </b-button>
       </div>
       <div class="d-flex align-items-center">
         <div class="mr-4">
@@ -188,19 +181,21 @@
 <script>
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
-// import DetailFeature from "./components/detail-feature";
+import DetailFeature from "./components/detail-feature";
 export default {
   components: {
     VueperSlides,
     VueperSlide,
-    // DetailFeature,
+    DetailFeature,
   },
   data: () => ({
     activeAction: "pic",
     images: [],
+    facilities: [],
   }),
   mounted() {
     console.log(this.property);
+    this.facilities = JSON.parse(this.property.facilities);
     this.images = [this.property.oneimageurl, ...this.property.images];
   },
   props: {

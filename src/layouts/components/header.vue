@@ -124,7 +124,7 @@ export default {
   },
   methods: {
     routeTo: function () {
-      this.$router.push("/shelta");
+      this.$router.push("/");
     },
   },
 };

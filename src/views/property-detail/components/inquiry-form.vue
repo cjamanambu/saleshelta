@@ -26,8 +26,8 @@
       class="mt-3"
       style="border-radius: 10px; height: 9em"
       no-resize
-      placeholder="I am interested in the Duplex at No 4 Amurie Babale street, maitama Abuja."
-    ></b-form-textarea>
+      placeholder="Message"
+    />
     <transition name="slide-fade">
       <p
         v-if="!seeMore"
