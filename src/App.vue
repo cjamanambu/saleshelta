@@ -3,6 +3,7 @@
     <AppLayout id="app">
       <router-view />
     </AppLayout>
+    <notifications position="bottom right" />
   </div>
 </template>
 

@@ -5,29 +5,37 @@
     img-alt="Card image"
     img-top
     class="d-inline-block w-100"
-    @click="
-      $router.push({
-        name: 'property-details',
-        params: { property: 'property-id' },
-      })
-    "
+    @click="viewListing"
+    img-height="250"
   >
     <b-card-text>
       <p style="font-size: 1.25em; letter-spacing: -0.05em">{{ name }}</p>
+      <div v-if="type === '6'">
+        <p
+          style="
+            letter-spacing: -0.05em;
+            color: #91958f;
+            text-decoration: line-through;
+            margin-bottom: -0.2em;
+          "
+        >
+          &#8358;
+          {{ parseFloat(listing.price).toLocaleString() }}
+        </p>
+        <p
+          style="
+            font-family: 'Gotham-medium', sans-serif;
+            font-size: 1.375em;
+            letter-spacing: -0.05em;
+          "
+        >
+          &#8358;
+          {{ parseFloat(listing.discountedprice).toLocaleString() }}
+        </p>
+      </div>
+
       <p
-        v-if="oldPrice"
-        style="
-          letter-spacing: -0.05em;
-          color: #91958f;
-          text-decoration: line-through;
-          margin-bottom: -0.2em;
-        "
-      >
-        &#8358;
-        {{ oldPrice }}
-        <span style="font-family: 'Gotham', sans-serif">m</span>
-      </p>
-      <p
+        v-if="type === '5'"
         style="
           font-family: 'Gotham-medium', sans-serif;
           font-size: 1.375em;
@@ -35,7 +43,23 @@
         "
       >
         &#8358;
-        {{ price }}<span style="font-family: 'Gotham Book', sans-serif">m</span>
+        {{ parseFloat(price).toLocaleString() }}
+      </p>
+      <p
+        v-if="type === '7'"
+        style="
+          font-family: 'Gotham-medium', sans-serif;
+
+          letter-spacing: -0.05em;
+        "
+      >
+        <span style="font-size: 1.375em">
+          &#8358;
+          {{ parseFloat(listing.installmentpayment).toLocaleString() }}
+        </span>
+        <span style="font-size: 0.9em">{{ listing.modeofpayment }}</span>
+
+        <span style="font-family: 'Gotham Book', sans-serif"></span>
       </p>
       <div class="d-flex justify-content-between">
         <div class="text-center">
@@ -47,7 +71,8 @@
               letter-spacing: -0.05em;
             "
           >
-            3 <span style="font-family: 'Gotham', sans-serif">beds</span>
+            {{ beds }}
+            <span style="font-family: 'Gotham', sans-serif">beds</span>
           </p>
         </div>
         <div class="text-center">
@@ -59,11 +84,12 @@
               letter-spacing: -0.05em;
             "
           >
-            2 <span style="font-family: 'Gotham', sans-serif">baths</span>
+            {{ baths }}
+            <span style="font-family: 'Gotham', sans-serif">baths</span>
           </p>
         </div>
         <div class="text-center">
-          <b-img :src="require('@/assets/images/parking.svg')" />
+          <b-img :src="require('@/assets/images/toilet.svg')" />
           <p
             style="
               font-family: 'Gotham-medium', sans-serif;
@@ -71,19 +97,18 @@
               letter-spacing: -0.05em;
             "
           >
-            1,307 <span style="font-family: 'Gotham', sans-serif">sqft</span>
+            {{ toilets }}
+            <span style="font-family: 'Gotham', sans-serif">toilets</span>
           </p>
         </div>
       </div>
       <p style="letter-spacing: -0.05em; font-size: 1.125em">
         {{ address }}
       </p>
-      <div v-if="type === 'outright'" class="badge outright-badge">
+      <div v-if="type === '5'" class="badge outright-badge">
         Outright Purchase
       </div>
-      <div v-else-if="type === 'mortgage'" class="badge mortgage-badge">
-        Mortgage
-      </div>
+      <div v-else-if="type === '7'" class="badge mortgage-badge">Mortgage</div>
       <div v-else class="badge distress-badge">Distress Sale</div>
     </b-card-text>
   </b-card>
@@ -92,27 +117,42 @@
 <script>
 export default {
   props: {
-    imgSrc: {
-      required: true,
-    },
+    imgSrc: {},
     name: {
       type: String,
-      required: true,
     },
     type: {
       type: String,
-      required: true,
     },
     price: {
       type: String,
-      required: true,
     },
     oldPrice: {
       type: String,
     },
     address: {
       type: String,
-      required: true,
+    },
+    beds: {
+      type: String,
+    },
+    baths: {
+      type: String,
+    },
+    toilets: {
+      type: String,
+    },
+    pin: {},
+    listing: {
+      type: Object,
+    },
+  },
+  methods: {
+    viewListing() {
+      this.$router.push({
+        name: "property-details",
+        params: { property: this.listing.pin },
+      });
     },
   },
 };

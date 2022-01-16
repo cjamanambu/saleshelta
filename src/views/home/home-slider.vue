@@ -4,7 +4,7 @@
       <vueper-slides fade autoplay :duration="6000">
         <vueper-slide
           class="v-slide"
-          :image="require('@/assets/images/home-header-1.svg')"
+          :image="require('@/assets/images/home-header-1.jpg')"
         >
           <template #content>
             <HomeSearch />
@@ -12,7 +12,7 @@
         </vueper-slide>
         <vueper-slide
           class="v-slide"
-          :image="require('@/assets/images/home-header-2.svg')"
+          :image="require('@/assets/images/home-header-2.jpg')"
         >
           <template #content>
             <HomeSearch />
@@ -31,7 +31,7 @@
       >
         <vueper-slide
           class="v-slide"
-          :image="require('@/assets/images/home-header-1.svg')"
+          :image="require('@/assets/images/home-header-1.jpg')"
         >
           <template #content>
             <MobileHomeSearch />
@@ -39,7 +39,7 @@
         </vueper-slide>
         <vueper-slide
           class="v-slide"
-          :image="require('@/assets/images/home-header-2.svg')"
+          :image="require('@/assets/images/home-header-2.jpg')"
         >
           <template #content>
             <MobileHomeSearch />

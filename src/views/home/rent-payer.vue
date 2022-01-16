@@ -18,20 +18,28 @@
         <span class="rp-action">Rent Payer</span>
       </p>
       <p class="rp-subtitle">Rent now, pay as you go.</p>
-      <b-button class="primary-btn btn-lg mt-3">Learn more</b-button>
+      <b-button class="primary-btn btn-lg mt-3" @click="openRentPayer">
+        Learn more
+      </b-button>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    openRentPayer() {
+      location.href = "https://myshelta.com/rentpayer";
+    },
+  },
+};
 </script>
 
 <style>
-#rent-payer {
+/* #rent-payer {
   //margin-top: 2em;
   //margin-bottom: 3em;
-}
+} */
 .rent-payer-wrapper {
   position: relative;
 }

@@ -6,19 +6,24 @@
     >
       Affordable Houses
     </p>
-    <div class="d-flex flex-lg-row flex-column">
-      <Listing
-        v-for="listing in listings"
-        :key="listing.id"
-        :img-src="listing.imgSrc"
-        :type="listing.type"
-        :name="listing.name"
-        :price="listing.price"
-        :address="listing.address"
-        :old-price="listing.oldPrice"
-        class="mr-lg-5 mb-lg-0 mb-5"
-      />
-    </div>
+    <b-row v-if="listings.length">
+      <b-col lg="3" md="4" v-for="listing in listings" :key="listing.id">
+        <Listing
+          :img-src="listing.oneimageurl"
+          :type="listing.businesstype"
+          :name="listing.title"
+          :price="listing.price"
+          :beds="listing.bedrooms"
+          :baths="listing.bathrooms"
+          :toilets="listing.toilets"
+          :address="listing.address"
+          :old-price="listing.oldPrice"
+          :listing="listing"
+          class="mb-lg-0 mb-5"
+        />
+      </b-col>
+    </b-row>
+    <Loader v-else />
   </div>
 </template>
 
@@ -30,42 +35,20 @@ export default {
   },
   data() {
     return {
-      listings: [
-        {
-          id: 0,
-          imgSrc: require("@/assets/images/listing-1.svg"),
-          type: "outright",
-          name: "Duplex",
-          price: "35",
-          address: "No 4 Amurie Babale street, Maitama....",
-        },
-        {
-          id: 1,
-          imgSrc: require("@/assets/images/listing-2.svg"),
-          type: "mortgage",
-          name: "Semi-Detached Bungalow",
-          price: "35",
-          address: "No 4 Amurie Babale street, Maitama....",
-        },
-        {
-          id: 2,
-          imgSrc: require("@/assets/images/listing-3.svg"),
-          type: "mortgage",
-          name: "Studio Apartment",
-          price: "8",
-          address: "No 4 Amurie Babale street, Maitama....",
-        },
-        {
-          id: 3,
-          imgSrc: require("@/assets/images/listing-4.svg"),
-          type: "distress",
-          name: "Luxurious Villa",
-          price: "1.9",
-          oldPrice: "2.5",
-          address: "No 2 Musa yahaya street, Asokoro....",
-        },
-      ],
+      listings: [],
     };
+  },
+  mounted() {
+    this.fetchListings();
+  },
+  methods: {
+    fetchListings() {
+      this.apiGet(this.ROUTES.affordableProperties).then((res) => {
+        if (res.data.success) {
+          this.listings = res.data.properties;
+        }
+      });
+    },
   },
 };
 </script>

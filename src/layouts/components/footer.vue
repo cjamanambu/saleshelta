@@ -29,7 +29,7 @@
                     <i
                       class="fa fa-spinner fa-spin ml-3 f-12 btn-loader"
                       v-if="loader"
-                    ></i>
+                    />
                   </button>
                 </div>
                 <div v-if="errors.length">
@@ -53,33 +53,22 @@
                   <ul class="ulist">
                     <p>COMPANY</p>
                     <li>
-                      <router-link to="/blogs" class="router-link-active">
-                        Blog
-                      </router-link>
+                      <a :href="mainShelta + '/blogs'"> Blog </a>
                     </li>
                     <li>
-                      <router-link to="/aboutus" class="router-link-active"
-                        >About us</router-link
-                      >
+                      <a :href="mainShelta + '/aboutus'"> About us </a>
                     </li>
                     <li>
-                      <router-link to="/tenant" class="router-link-active"
-                        >Tenant</router-link
-                      >
+                      <a :href="mainShelta + '/tenant'"> Tenant </a>
                     </li>
                     <li>
-                      <router-link to="/landlord" class="router-link-active"
-                        >Landlord</router-link
-                      >
+                      <a :href="mainShelta + '/landlord'"> Landlord </a>
                     </li>
                     <li>
-                      <a href="https://myshelta.com/careers/">Careers</a>
-                      <!-- <router-link to="/career" class="router-link-active"></router-link> -->
+                      <a :href="mainShelta + '/careers'"> Careers </a>
                     </li>
                     <li>
-                      <router-link to="/shelta" class="router-link-active"
-                        >Property management</router-link
-                      >
+                      <a :href="mainShelta"> Property management </a>
                     </li>
                   </ul>
                 </div>
@@ -87,9 +76,7 @@
                   <ul class="ulist">
                     <p>SUPPORT</p>
                     <li>
-                      <router-link to="/faq" class="router-link-active">
-                        Help & FAQ
-                      </router-link>
+                      <a :href="mainShelta + '/faq'">Help & FAQs </a>
                     </li>
                     <li>
                       <a href="mailto:hello@myshelta.com">
@@ -97,7 +84,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="sheltaoffice@gmail.com">
+                      <a href="mailto:sheltaoffice@gmail.com">
                         sheltaoffice@gmail.com
                       </a>
                     </li>
@@ -123,19 +110,16 @@
           <img class="abl-logo" src="@/assets/images/abella-logo.svg" alt="" />
         </h6>
         <div class="social-icon-div">
-          <a
-            href="https://www.facebook.com/myshelta"
-            class="fa fa-facebook"
-          ></a>
+          <a href="https://www.facebook.com/myshelta" class="fa fa-facebook" />
           <a
             href="https://www.instagram.com/myshelta"
             class="fa fa-instagram"
-          ></a>
-          <a href="https://www.twitter.com/myshelta" class="fa fa-twitter"></a>
+          />
+          <a href="https://www.twitter.com/myshelta" class="fa fa-twitter" />
           <a
             href="https://www.linkedin.com/company/myshelta"
             class="fa fa-linkedin"
-          ></a>
+          />
         </div>
       </div>
     </div>
@@ -150,6 +134,7 @@ export default {
       email: "",
       errors: [],
       loader: false,
+      mainShelta: "https://myshelta.com",
     };
   },
 

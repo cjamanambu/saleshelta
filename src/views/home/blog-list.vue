@@ -1,12 +1,18 @@
 <template>
   <div id="blog-list" class="mt-4">
     <p class="bl-title mb-5">Shelta Blog</p>
-    <div class="d-flex justify-content-between flex-lg-row flex-column">
-      <BlogPost class="mr-lg-4 mb-lg-0 mb-4" />
-      <BlogPost class="mr-lg-4 mb-lg-0 mb-4" />
-      <BlogPost class="mr-lg-4 mb-lg-0 mb-4" />
-      <BlogPost />
-    </div>
+    <b-row v-if="blogs.length">
+      <b-col
+        class="mb-4"
+        lg="3"
+        md="4"
+        v-for="(blog, index) in blogs"
+        :key="index"
+      >
+        <BlogPost v-if="index < 4" :blog="blog" class="mb-lg-0 mb-4" />
+      </b-col>
+    </b-row>
+    <Loader v-else />
   </div>
 </template>
 
@@ -15,6 +21,23 @@ import BlogPost from "./components/blog-post";
 export default {
   components: {
     BlogPost,
+  },
+  data() {
+    return {
+      blogs: [],
+    };
+  },
+  mounted() {
+    this.fetchBlogs();
+  },
+  methods: {
+    fetchBlogs() {
+      this.apiGet(this.ROUTES.blogs).then((res) => {
+        if (res.data.success) {
+          this.blogs = res.data.blogs;
+        }
+      });
+    },
   },
 };
 </script>

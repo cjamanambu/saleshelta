@@ -1,9 +1,16 @@
 <template>
-  <div class="detail-feature">Feature</div>
+  <div class="detail-feature">{{ feature }}</div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    feature: {
+      type: String,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style>
