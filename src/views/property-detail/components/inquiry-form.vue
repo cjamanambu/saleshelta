@@ -7,21 +7,25 @@
     <p style="font-size: 1.4375em; letter-spacing: -0.05em">
       More about this property
     </p>
-    <b-form-input
-      class="mt-2"
-      style="height: 3.75em; border-radius: 50px; padding-left: 2em"
-      placeholder="Fullname"
-    />
-    <b-form-input
-      class="mt-3"
-      style="height: 3.75em; border-radius: 50px; padding-left: 2em"
-      placeholder="Email"
-    />
-    <b-form-input
-      class="mt-3"
-      style="height: 3.75em; border-radius: 50px; padding-left: 2em"
-      placeholder="Phone"
-    />
+    <b-form-group>
+      <b-form-input
+        style="height: 3.75em; border-radius: 50px; padding-left: 2em"
+        placeholder="Fullname"
+      />
+    </b-form-group>
+    <b-form-group>
+      <b-form-input
+        style="height: 3.75em; border-radius: 50px; padding-left: 2em"
+        placeholder="Email"
+      />
+    </b-form-group>
+    <b-form-group>
+      <b-form-input
+        style="height: 3.75em; border-radius: 50px; padding-left: 2em"
+        placeholder="Phone"
+      />
+    </b-form-group>
+
     <b-form-textarea
       class="mt-3"
       style="border-radius: 10px; height: 9em"
@@ -89,10 +93,23 @@
 </template>
 
 <script>
+import { required, email } from "vuelidate/lib/validators";
 export default {
+  validations
   data() {
     return {
       seeMore: false,
+      phoneOptions: {
+        showSearchBox: true,
+        showFlags: true,
+        showDialCodeInList: true,
+        width: "270px",
+        disabled: true,
+      },
+      phone: null,
+      fullname: null,
+      email: null,
+      message: null,
     };
   },
 };

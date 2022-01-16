@@ -48,7 +48,6 @@ export default {
   methods: {
     fetchListings() {
       this.apiGet(this.ROUTES.properties).then((res) => {
-        console.log({ res });
         if (res.data.success) {
           this.listings = res.data.properties;
         }

@@ -11,13 +11,14 @@
         <Listing
           :img-src="listing.oneimageurl"
           :type="listing.businesstype"
-          :name="listing.name"
+          :name="listing.title"
           :price="listing.price"
           :beds="listing.bedrooms"
           :baths="listing.bathrooms"
           :toilets="listing.toilets"
           :address="listing.address"
           :old-price="listing.oldPrice"
+          :listing="listing"
           class="mb-lg-0 mb-5"
         />
       </b-col>
@@ -34,54 +35,20 @@ export default {
   },
   data() {
     return {
-      listings: [
-        {
-          id: 0,
-          oneimageurl: require("@/assets/images/listing-1.svg"),
-          businesstype: "5",
-          name: "Duplex",
-          price: "35000000",
-          address: "No 4 Amurie Babale street, Maitama....",
-          bedrooms: "2",
-          bathrooms: "2",
-          toilets: "2",
-        },
-        {
-          id: 1,
-          oneimageurl: require("@/assets/images/listing-2.svg"),
-          businesstype: "7",
-          name: "Semi-Detached Bungalow",
-          price: "35000000",
-          address: "No 4 Amurie Babale street, Maitama....",
-          bedrooms: "2",
-          bathrooms: "2",
-          toilets: "2",
-        },
-        {
-          id: 2,
-          oneimageurl: require("@/assets/images/listing-3.svg"),
-          businesstype: "7",
-          name: "Studio Apartment",
-          price: "8000000",
-          address: "No 4 Amurie Babale street, Maitama....",
-          bedrooms: "2",
-          bathrooms: "2",
-          toilets: "2",
-        },
-        {
-          id: 3,
-          oneimageurl: require("@/assets/images/listing-4.svg"),
-          businesstype: "6",
-          name: "Luxurious Villa",
-          price: "1900000",
-          oldPrice: "2500000",
-          address: "No 2 Musa yahaya street, Asokoro....",
-          bedrooms: "2",
-          bathrooms: "2",
-          toilets: "2",
-        },
-      ],
+      listings: [],
     };
+  },
+  mounted() {
+    this.fetchListings();
+  },
+  methods: {
+    fetchListings() {
+      this.apiGet(this.ROUTES.affordableProperties).then((res) => {
+        if (res.data.success) {
+          this.listings = res.data.properties;
+        }
+      });
+    },
   },
 };
 </script>

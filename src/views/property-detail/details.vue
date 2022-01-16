@@ -53,6 +53,9 @@
         })
       "
       :visible-slides="images.length - images.length / 2"
+      fade
+      autoplay
+      :duration="6000"
       fixed-height="75px"
       :bullets="false"
       :touchable="false"

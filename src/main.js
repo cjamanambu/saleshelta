@@ -6,6 +6,7 @@ import apiService from "@/services/api.service";
 import innerLoader from "@/layouts/components/inner-loader";
 import BootstrapVue from "bootstrap-vue";
 import Notifications from "vue-notification";
+import { Vuelidate } from "vuelidate";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -21,6 +22,7 @@ Vue.component("Loader", innerLoader);
 Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue);
+Vue.use(Vuelidate);
 Vue.use(Notifications);
 Vue.mixin(apiService);
 

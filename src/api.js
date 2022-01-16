@@ -11,4 +11,5 @@ export const ROUTES = {
   locations: `fetchcitiesinnigeria`,
   propertyTypes: `fetchpropertytypes`,
   affordableProperties: `affordablepropertiesforsale`,
+  requestSale: `requestforsales`,
 };

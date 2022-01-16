@@ -36,10 +36,10 @@ export default {
 </script>
 
 <style>
-#rent-payer {
+/* #rent-payer {
   //margin-top: 2em;
   //margin-bottom: 3em;
-}
+} */
 .rent-payer-wrapper {
   position: relative;
 }
