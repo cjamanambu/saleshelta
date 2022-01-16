@@ -30,34 +30,30 @@
           />
         </b-form-group>
         <label class="mt-3" for="input-live">Location</label>
-        <b-form-input
+        <b-form-select
           id="input-live"
-          placeholder="Location"
           class="advanced-form-input"
+          :options="locations"
+          v-model="location"
         />
         <div class="mt-4 d-flex">
           <b-form-group class="w-100 mr-4">
             <label for="type">Property Type</label>
-            <b-form-input
+            <b-form-select
               id="type"
               placeholder="Property Type"
               class="advanced-form-input"
+              :options="propertyTypes"
+              v-model="propertyType"
             />
           </b-form-group>
-          <b-form-group class="w-50 mr-2">
+          <b-form-group class="w-100">
             <label for="type">Price</label>
             <b-form-input
               id="type"
-              placeholder="No max"
               class="advanced-form-input"
-            />
-          </b-form-group>
-          <b-form-group class="w-50">
-            <label for="type" style="visibility: hidden">Price</label>
-            <b-form-input
-              id="type"
-              placeholder="No max"
-              class="advanced-form-input"
+              v-model="price"
+              type="number"
             />
           </b-form-group>
         </div>
@@ -83,13 +79,48 @@ export default {
         { text: "Mortgage", value: "mortgage" },
         { text: "Outright purchase", value: "outright" },
       ],
+      location: null,
+      locations: [],
+      propertyType: null,
+      propertyTypes: [],
+      price: 1000000,
     };
+  },
+  mounted() {
+    this.fetchLocations();
+    this.fetchPropertyTypes();
   },
   methods: {
     search() {
       this.$router.push({
         name: "search",
         query: { search_param: this.searchTerm },
+      });
+    },
+    fetchLocations() {
+      this.apiGet(this.ROUTES.locations).then((res) => {
+        console.log(res);
+        this.locations = [{ text: "Please select a location", value: null }];
+        if (res.data.success) {
+          const { cities } = res.data;
+          cities.forEach((city) => {
+            this.locations.push({ text: city.name, value: city.id });
+          });
+        }
+      });
+    },
+    fetchPropertyTypes() {
+      this.apiGet(this.ROUTES.propertyTypes).then((res) => {
+        console.log(res);
+        this.propertyTypes = [
+          { text: "Please select a property type", value: null },
+        ];
+        if (res.data.success) {
+          const { propertytypes } = res.data;
+          propertytypes.forEach((type) => {
+            this.propertyTypes.push({ text: type.type, value: type.id });
+          });
+        }
       });
     },
   },
@@ -146,6 +177,10 @@ export default {
   height: 3.75em;
   border-radius: 60px;
   padding-left: 2em;
+}
+.advanced-form-spin {
+  height: 3.75em;
+  border-radius: 60px;
 }
 .advanced-search-form {
   font-family: "Gotham", sans-serif;

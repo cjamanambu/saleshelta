@@ -6,23 +6,36 @@
     img-top
     class="d-inline-block w-100"
     @click="viewListing"
+    img-height="250"
   >
     <b-card-text>
       <p style="font-size: 1.25em; letter-spacing: -0.05em">{{ name }}</p>
+      <div v-if="type === '6'">
+        <p
+          style="
+            letter-spacing: -0.05em;
+            color: #91958f;
+            text-decoration: line-through;
+            margin-bottom: -0.2em;
+          "
+        >
+          &#8358;
+          {{ parseFloat(listing.price).toLocaleString() }}
+        </p>
+        <p
+          style="
+            font-family: 'Gotham-medium', sans-serif;
+            font-size: 1.375em;
+            letter-spacing: -0.05em;
+          "
+        >
+          &#8358;
+          {{ parseFloat(listing.discountedprice).toLocaleString() }}
+        </p>
+      </div>
+
       <p
-        v-if="oldPrice"
-        style="
-          letter-spacing: -0.05em;
-          color: #91958f;
-          text-decoration: line-through;
-          margin-bottom: -0.2em;
-        "
-      >
-        &#8358;
-        {{ parseFloat(oldPrice).toLocaleString() }}
-        <span style="font-family: 'Gotham', sans-serif">m</span>
-      </p>
-      <p
+        v-if="type === '5'"
         style="
           font-family: 'Gotham-medium', sans-serif;
           font-size: 1.375em;
@@ -31,6 +44,21 @@
       >
         &#8358;
         {{ parseFloat(price).toLocaleString() }}
+      </p>
+      <p
+        v-if="type === '7'"
+        style="
+          font-family: 'Gotham-medium', sans-serif;
+
+          letter-spacing: -0.05em;
+        "
+      >
+        <span style="font-size: 1.375em">
+          &#8358;
+          {{ parseFloat(listing.installmentpayment).toLocaleString() }}
+        </span>
+        <span style="font-size: 0.9em">{{ listing.modeofpayment }}</span>
+
         <span style="font-family: 'Gotham Book', sans-serif"></span>
       </p>
       <div class="d-flex justify-content-between">
@@ -60,7 +88,7 @@
             <span style="font-family: 'Gotham', sans-serif">baths</span>
           </p>
         </div>
-        <div clpropertyass="text-center">
+        <div class="text-center">
           <b-img :src="require('@/assets/images/toilet.svg')" />
           <p
             style="

@@ -76,6 +76,8 @@
         })
       "
       :visible-slides="images.length - images.length / 1.25"
+      autoplay
+      :duration="6000"
       fixed-height="75px"
       :bullets="false"
       :touchable="false"
@@ -90,91 +92,203 @@
       >
       </vueper-slide>
     </vueper-slides>
-    <div
-      class="d-flex align-items-start justify-content-between flex-lg-row flex-column mt-5"
-    >
-      <div>
-        <p style="font-size: 1.875em; letter-spacing: -0.05em">
-          {{ property.title }}
-        </p>
-        <p style="font-size: 2.5em; letter-spacing: -0.05em">
-          <span style="font-family: 'Gotham-medium', sans-serif">
-            &#8358; {{ parseFloat(property.price).toLocaleString() }}
-          </span>
-        </p>
-        <div class="d-flex justify-content-between" style="max-width: 40em">
-          <div class="text-center">
-            <b-img :src="require('@/assets/images/bed.svg')" />
-            <p class="" style="font-size: 1.125em; letter-spacing: -0.05em">
-              <span style="font-family: 'Gotham-medium', sans-serif">
-                {{ property.bedrooms }}
+    <b-row>
+      <b-col lg="8">
+        <div>
+          <p style="font-size: 1.875em; letter-spacing: -0.05em">
+            {{ property.title }}
+          </p>
+          <div v-if="property.businesstype === '6'">
+            <p
+              style="
+                font-size: 1.5em;
+                letter-spacing: -0.05em;
+                color: #91958f;
+                margin-bottom: 0;
+              "
+            >
+              <span
+                style="
+                  font-family: 'Gotham-medium', sans-serif;
+                  text-decoration: line-through;
+                "
+              >
+                &#8358; {{ parseFloat(property.price).toLocaleString() }}
               </span>
-              beds
             </p>
-          </div>
-          <div class="text-center">
-            <b-img :src="require('@/assets/images/bathroom.svg')" />
-            <p class="" style="font-size: 1.125em; letter-spacing: -0.05em">
-              <span style="font-family: 'Gotham-medium', sans-serif">{{
-                property.bathrooms
-              }}</span>
-              baths
-            </p>
-          </div>
-          <div class="text-center">
-            <b-img :src="require('@/assets/images/toilet.svg')" />
-            <p class="" style="font-size: 1.125em; letter-spacing: -0.05em">
+            <p style="font-size: 2.5em; letter-spacing: -0.05em">
               <span style="font-family: 'Gotham-medium', sans-serif">
-                {{ property.toilets }}
+                &#8358;
+                {{ parseFloat(property.discountedprice).toLocaleString() }}
               </span>
-              toilets
             </p>
           </div>
-          <div class="text-center">
-            <b-img :src="require('@/assets/images/parking.svg')" />
-            <p style="font-size: 1.125em; letter-spacing: -0.05em">
-              <span style="font-family: 'Gotham-medium', sans-serif">
-                {{ parseFloat(property.squarefootage).toLocaleString() }}
-              </span>
-              sqft
-            </p>
-          </div>
-        </div>
-        <p style="font-size: 1.25em; letter-spacing: -0.05em; margin-bottom: 0">
-          {{ property.address }}
-        </p>
-        <p style="font-size: 1em; letter-spacing: -0.05em">
-          {{ property.city + ", " + property.state }}
-        </p>
-        <div class="d-flex flex-wrap mb-5" style="max-width: 40em">
-          <DetailFeature
-            v-for="(feature, index) in facilities"
-            :key="index"
-            :feature="feature"
-          />
-        </div>
-      </div>
-      <div class="d-flex align-items-center">
-        <div class="mr-4">
           <p
-            class="mt-4 mb-0"
-            style="font-size: 0.875em; letter-spacing: -0.05em"
+            v-if="property.businesstype === '5'"
+            style="font-size: 2.5em; letter-spacing: -0.05em"
           >
-            Developers
+            <span style="font-family: 'Gotham-medium', sans-serif">
+              &#8358; {{ parseFloat(property.price).toLocaleString() }}
+            </span>
           </p>
           <p
-            style="
-              font-family: 'Gotham-medium', sans-serif;
-              font-size: 1.5em;
-              letter-spacing: -0.05em;
-            "
+            v-if="property.businesstype === '7'"
+            style="letter-spacing: -0.05em"
           >
-            Brains and Hammers
+            <span
+              style="font-family: 'Gotham-medium', sans-serif; font-size: 2.5em"
+            >
+              &#8358;
+              {{ parseFloat(property.installmentpayment).toLocaleString() }}
+            </span>
+            <span style="font-size: 1.25em">{{ property.modeofpayment }}</span>
           </p>
+          <div class="d-flex justify-content-between" style="max-width: 40em">
+            <div class="text-center">
+              <b-img :src="require('@/assets/images/bed.svg')" />
+              <p class="" style="font-size: 1.125em; letter-spacing: -0.05em">
+                <span style="font-family: 'Gotham-medium', sans-serif">
+                  {{ property.bedrooms }}
+                </span>
+                beds
+              </p>
+            </div>
+            <div class="text-center">
+              <b-img :src="require('@/assets/images/bathroom.svg')" />
+              <p class="" style="font-size: 1.125em; letter-spacing: -0.05em">
+                <span style="font-family: 'Gotham-medium', sans-serif">
+                  {{ property.bathrooms }}
+                </span>
+                baths
+              </p>
+            </div>
+            <div class="text-center">
+              <b-img :src="require('@/assets/images/toilet.svg')" />
+              <p class="" style="font-size: 1.125em; letter-spacing: -0.05em">
+                <span style="font-family: 'Gotham-medium', sans-serif">
+                  {{ property.toilets }}
+                </span>
+                toilets
+              </p>
+            </div>
+            <div class="text-center">
+              <b-img :src="require('@/assets/images/parking.svg')" />
+              <p style="font-size: 1.125em; letter-spacing: -0.05em">
+                <span style="font-family: 'Gotham-medium', sans-serif">
+                  {{ parseFloat(property.squarefootage).toLocaleString() }}
+                </span>
+                sqft
+              </p>
+            </div>
+          </div>
+          <p
+            style="font-size: 1.25em; letter-spacing: -0.05em; margin-bottom: 0"
+          >
+            {{ property.address }}
+          </p>
+          <p style="font-size: 1em; letter-spacing: -0.05em">
+            {{ property.city + ", " + property.state }}
+          </p>
+          <div class="mt-4">
+            <p style="letter-spacing: -0.05em">{{ property.description }}</p>
+            <div class="d-flex justify-content-between">
+              <p>Type</p>
+              <p style="letter-spacing: -0.05em">
+                {{ property.typename }}
+              </p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p>Sub-type</p>
+              <p style="letter-spacing: -0.05em">
+                {{ property.subtypename }}
+              </p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p>Category</p>
+              <p style="letter-spacing: -0.05em">
+                {{ property.businesstypename }}
+              </p>
+            </div>
+            <div
+              v-if="property.businesstype === '6'"
+              class="d-flex justify-content-between"
+            >
+              <p>Sale Discount</p>
+              <p style="letter-spacing: -0.05em">
+                {{
+                  ((parseFloat(property.price) -
+                    parseFloat(property.discountedprice)) /
+                    parseFloat(property.price)) *
+                  100
+                }}
+                %
+              </p>
+            </div>
+            <div
+              v-if="property.businesstype === '7'"
+              class="d-flex justify-content-between"
+            >
+              <p>Mortgage Initial Payment</p>
+              <p style="letter-spacing: -0.05em">
+                &#8358; {{ parseFloat(property.initialprice).toLocaleString() }}
+              </p>
+            </div>
+            <div
+              v-if="property.businesstype === '7'"
+              class="d-flex justify-content-between"
+            >
+              <p>Mortgage Duration</p>
+              <p style="letter-spacing: -0.05em">
+                {{ property.duration }} years
+              </p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p>Occupancy</p>
+              <p style="letter-spacing: -0.05em">
+                {{ property.status }}
+              </p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p>Status</p>
+              <p
+                v-if="property.verified === '1'"
+                style="letter-spacing: -0.05em"
+              >
+                Verified
+              </p>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap mb-5">
+            <DetailFeature
+              v-for="(feature, index) in facilities"
+              :key="index"
+              :feature="feature"
+            />
+          </div>
         </div>
-        <b-img fluid :src="require('@/assets/images/brains-hammer.svg')" />
-      </div>
-    </div>
+      </b-col>
+      <b-col lg="4">
+        <div class="d-flex align-items-center">
+          <div class="mr-4">
+            <p
+              class="mt-4 mb-0"
+              style="font-size: 0.875em; letter-spacing: -0.05em"
+            >
+              Developers
+            </p>
+            <p
+              style="
+                font-family: 'Gotham-medium', sans-serif;
+                font-size: 1.5em;
+                letter-spacing: -0.05em;
+              "
+            >
+              {{ property.developer }}
+            </p>
+          </div>
+        </div>
+      </b-col>
+    </b-row>
   </div>
 </template>
 

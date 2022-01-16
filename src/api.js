@@ -8,4 +8,7 @@ export const ROUTES = {
   properties: `fetchpropertiesforsale`,
   blogs: `fetchblogsarticles`,
   property: `getpropertybypin`,
+  locations: `fetchcitiesinnigeria`,
+  propertyTypes: `fetchpropertytypes`,
+  affordableProperties: `affordablepropertiesforsale`,
 };
