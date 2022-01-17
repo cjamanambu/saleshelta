@@ -27,5 +27,19 @@ export default {
           .finally(() => (this.apiSubmitting = false));
       });
     },
+    apiInvalidForm() {
+      this.$notify({
+        title: "Invalid Form Submission",
+        text: "Please fill in all fields correctly",
+        type: "error",
+      });
+    },
+    apiSuccess(title, text) {
+      this.$notify({
+        title,
+        text,
+        type: "success",
+      });
+    },
   },
 };
