@@ -23,7 +23,10 @@
       Advanced Search <i class="fa fa-chevron-down ml-2" />
     </p>
     <b-modal ref="advanced-search" hide-footer size="lg" centered>
-      <div class="advanced-search-form px-1 pt-5">
+      <form
+        @submit.prevent="advancedSearch"
+        class="advanced-search-form px-1 pt-5"
+      >
         <b-form-group v-slot="{ ariaDescribedby }">
           <b-form-radio-group
             v-model="selected"
@@ -61,12 +64,13 @@
           />
         </b-form-group>
         <b-button
+          type="submit"
           class="mt-4 mb-4 secondary-btn w-100"
           style="height: 3.75em; border-radius: 60px"
         >
           Search
         </b-button>
-      </div>
+      </form>
     </b-modal>
   </div>
 </template>
@@ -78,9 +82,9 @@ export default {
       searchTerm: "",
       selected: "distress",
       options: [
-        { text: "Distress", value: "distress" },
-        { text: "Mortgage", value: "mortgage" },
-        { text: "Outright", value: "outright" },
+        { text: "Distress", value: "6" },
+        { text: "Mortgage", value: "7" },
+        { text: "Outright", value: "5" },
       ],
       location: null,
       locations: [],
@@ -100,9 +104,18 @@ export default {
         query: { search_param: this.searchTerm },
       });
     },
+    advancedSearch() {
+      localStorage.setItem("businesstype", this.selected);
+      localStorage.setItem("cityid", this.location);
+      localStorage.setItem("type", this.propertyType);
+      localStorage.setItem("price", this.price);
+      this.$router.push({
+        name: "search",
+        query: { search_param: "advanced" },
+      });
+    },
     fetchLocations() {
       this.apiGet(this.ROUTES.locations).then((res) => {
-        console.log(res);
         this.locations = [{ text: "Please select a location", value: null }];
         if (res.data.success) {
           const { cities } = res.data;
@@ -114,7 +127,6 @@ export default {
     },
     fetchPropertyTypes() {
       this.apiGet(this.ROUTES.propertyTypes).then((res) => {
-        console.log(res);
         this.propertyTypes = [
           { text: "Please select a property type", value: null },
         ];

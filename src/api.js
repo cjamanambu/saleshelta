@@ -12,4 +12,6 @@ export const ROUTES = {
   propertyTypes: `fetchpropertytypes`,
   affordableProperties: `affordablepropertiesforsale`,
   requestSale: `requestforsales`,
+  wildSearch: `wildsearchpropertyforsale`,
+  advancedSearch: `advancesearchforsales`,
 };

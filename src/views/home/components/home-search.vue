@@ -20,7 +20,10 @@
       Advanced Search <i class="fa fa-chevron-down ml-2" />
     </p>
     <b-modal ref="advanced-search" hide-footer size="lg" centered>
-      <div class="advanced-search-form px-4 py-2">
+      <form
+        @submit.prevent="advancedSearch"
+        class="advanced-search-form px-4 py-2"
+      >
         <b-form-group v-slot="{ ariaDescribedby }">
           <b-form-radio-group
             v-model="selected"
@@ -58,12 +61,13 @@
           </b-form-group>
         </div>
         <b-button
+          type="submit"
           class="mt-4 mb-4 secondary-btn w-100"
           style="height: 3.75em; border-radius: 60px"
         >
           Search
         </b-button>
-      </div>
+      </form>
     </b-modal>
   </div>
 </template>
@@ -73,15 +77,15 @@ export default {
   data() {
     return {
       searchTerm: "",
-      selected: "distress",
+      selected: "6",
       options: [
-        { text: "Distress sale", value: "distress" },
-        { text: "Mortgage", value: "mortgage" },
-        { text: "Outright purchase", value: "outright" },
+        { text: "Distress sale", value: "6" },
+        { text: "Mortgage", value: "7" },
+        { text: "Outright purchase", value: "5" },
       ],
-      location: null,
+      location: "",
       locations: [],
-      propertyType: null,
+      propertyType: "",
       propertyTypes: [],
       price: 1000000,
     };
@@ -97,10 +101,19 @@ export default {
         query: { search_param: this.searchTerm },
       });
     },
+    advancedSearch() {
+      localStorage.setItem("businesstype", this.selected);
+      localStorage.setItem("cityid", this.location);
+      localStorage.setItem("type", this.propertyType);
+      localStorage.setItem("price", this.price);
+      this.$router.push({
+        name: "search",
+        query: { search_param: "advanced" },
+      });
+    },
     fetchLocations() {
       this.apiGet(this.ROUTES.locations).then((res) => {
-        console.log(res);
-        this.locations = [{ text: "Please select a location", value: null }];
+        this.locations = [{ text: "Please select a location", value: "" }];
         if (res.data.success) {
           const { cities } = res.data;
           cities.forEach((city) => {
@@ -111,9 +124,8 @@ export default {
     },
     fetchPropertyTypes() {
       this.apiGet(this.ROUTES.propertyTypes).then((res) => {
-        console.log(res);
         this.propertyTypes = [
-          { text: "Please select a property type", value: null },
+          { text: "Please select a property type", value: "" },
         ];
         if (res.data.success) {
           const { propertytypes } = res.data;
