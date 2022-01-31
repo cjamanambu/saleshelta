@@ -33,6 +33,7 @@
             :options="options"
             :aria-describedby="ariaDescribedby"
             name="radio-inline"
+            size="sm"
           />
         </b-form-group>
         <b-form-group>
@@ -70,6 +71,11 @@
         >
           Search
         </b-button>
+        <div class="text-center">
+          <p class="d-inline-block" @click="$refs['advanced-search'].hide()">
+            close
+          </p>
+        </div>
       </form>
     </b-modal>
   </div>

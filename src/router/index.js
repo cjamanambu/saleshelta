@@ -30,6 +30,14 @@ const routes = [
         "Property Details - Shelta Sales - Property Financing & Management Company",
     },
   },
+  {
+    path: "/faqs",
+    name: "faqs",
+    component: () => import("@/views/faq"),
+    meta: {
+      title: "FAQs - Shelta Sales - Property Financing & Management Company",
+    },
+  },
 ];
 
 const router = new VueRouter({

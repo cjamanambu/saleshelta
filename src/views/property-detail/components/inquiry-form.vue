@@ -66,9 +66,9 @@
             letter-spacing: -0.05em;
           "
         >
-          By proceeding, you consent to receive calls and texts at the number
-          you provided, including marketing by autodialer and prerecorded and
-          artificial voice,...
+          By proceeding, you consent to receiving calls and texts at the number
+          you provided, including marketing by auto dialer, pre-recorded,
+          artificial voice, and email from...
         </p>
       </transition>
       <transition name="slide-fade">
@@ -86,16 +86,21 @@
             letter-spacing: -0.05em;
           "
         >
-          By proceeding, you consent to receive calls and texts at the number
-          you provided, including marketing by autodialer and prerecorded and
-          artificial voice. By proceeding, you consent to receive calls and
-          texts at the number you provided, including marketing by autodialer
-          and prerecorded and artificial voice, and email, from
-          <span style="color: #0033ea">myshelta.com</span> about your inquiry
-          but not as a condition of any purchase; this applies regardless of
-          whether you check, or leave un-checked, any box above. You also agree
-          to our Terms of Use, and to our Privacy Policy regarding the
-          information relating to you. Msg/data rates may apply. <br />
+          By proceeding, you consent to receiving calls and texts at the number
+          you provided, including marketing by auto dialer, pre-recorded,
+          artificial voice, and email from
+          <a href="https://myshelta.com" style="color: #0033ea">
+            myshelta.com
+          </a>
+          about your inquiry but not as a condition of any purchase. This
+          applies regardless of whether you check or leave any box unchecked
+          above.
+          <br />
+          You also agree to our Terms of Use, and to our privacy policy
+          regarding the information relating to you.
+          <br />
+          Msg/data rates may apply.
+          <br />
           <span style="color: #0033ea">
             This consent applies even if you are on a corporate, state or small
             holding.

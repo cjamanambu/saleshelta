@@ -76,7 +76,12 @@
                   <ul class="ulist">
                     <p>SUPPORT</p>
                     <li>
-                      <a :href="mainShelta + '/faq'">Help & FAQs </a>
+                      <a
+                        href="javascript:void(0)"
+                        @click="$router.push({ name: 'faqs' })"
+                      >
+                        Help & FAQs
+                      </a>
                     </li>
                     <li>
                       <a href="mailto:hello@myshelta.com">

@@ -17,7 +17,7 @@
       </div>
     </div>
     <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand" @click="routeTo()">
+      <a class="navbar-brand" :href="mainShelta">
         <img src="@/assets/images/logo-yellow.svg" alt="logo" />
       </a>
       <button
@@ -40,11 +40,7 @@
         <form class="form-inline my-2 my-lg-0">
           <ul class="navbar-nav m-auto">
             <li class="nav-item active">
-              <a class="nav-link">
-                <router-link to="/" class="router-link-active">
-                  Home
-                </router-link>
-              </a>
+              <a class="nav-link" :href="mainShelta"> Home </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" :href="mainShelta + '/aboutus'"> About us </a>
@@ -90,19 +86,25 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" :href="mainShelta + '/faq'"> FAQs </a>
+              <a
+                class="nav-link"
+                href="javascript:void(0)"
+                @click="$router.push({ name: 'faqs' })"
+              >
+                FAQs
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" :href="mainShelta + '/careers'"> Careers </a>
             </li>
-            <!--            <div class="register_btn">-->
-            <!--              <button v-if="loggedIn" class="btn">-->
-            <!--                <router-link to="/login">Login</router-link>-->
-            <!--              </button>-->
-            <!--              <button class="btn">-->
-            <!--                <router-link to="/signup">Sign up</router-link>-->
-            <!--              </button>-->
-            <!--            </div>-->
+            <div class="register_btn">
+              <button v-if="loggedIn" class="btn">
+                <a :href="mainShelta + '/login'">Login</a>
+              </button>
+              <button class="btn">
+                <a :href="mainShelta + '/signup'">Sign up</a>
+              </button>
+            </div>
           </ul>
         </form>
       </div>

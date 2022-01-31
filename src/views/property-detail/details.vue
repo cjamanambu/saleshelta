@@ -205,7 +205,7 @@
         </div>
       </b-col>
       <b-col lg="4">
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center" v-if="property.developer">
           <div class="mr-4">
             <p
               class="mt-4 mb-0"
