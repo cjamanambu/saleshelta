@@ -6,6 +6,7 @@ import apiService from "@/services/api.service";
 import innerLoader from "@/layouts/components/inner-loader";
 import BootstrapVue from "bootstrap-vue";
 import Notifications from "vue-notification";
+import VueCookies from "vue-cookies";
 import { Vuelidate } from "vuelidate";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
@@ -24,6 +25,7 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(Vuelidate);
 Vue.use(Notifications);
+Vue.use(VueCookies);
 Vue.mixin(apiService);
 
 new Vue({

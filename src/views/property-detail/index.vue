@@ -19,6 +19,7 @@ import jquery from "jquery";
 export default {
   mounted() {
     this.fetchProperty();
+    this.handleAffiliate();
   },
   components: {
     Controls,
@@ -38,6 +39,19 @@ export default {
       this.apiGet(url).then((res) => {
         this.property = res.data.property;
       });
+    },
+    handleAffiliate() {
+      const { realtorID } = this.$route.params;
+      if (realtorID) {
+        let existingRealtorID = this.$cookies.get("realtor-id");
+        if (
+          !existingRealtorID ||
+          (existingRealtorID && existingRealtorID !== realtorID)
+        ) {
+          this.$cookies.set("realtor-id", realtorID, "3d", "/", "myshelta.com");
+        }
+      }
+      console.log(this.$cookies.get("realtor-id"));
     },
   },
 };

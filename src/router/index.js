@@ -31,6 +31,15 @@ const routes = [
     },
   },
   {
+    path: "/property-details/:property/:realtorID",
+    name: "property-details",
+    component: () => import("@/views/property-detail/index"),
+    meta: {
+      title:
+        "Property Details - Shelta Sales - Property Financing & Management Company",
+    },
+  },
+  {
     path: "/faqs",
     name: "faqs",
     component: () => import("@/views/faq"),

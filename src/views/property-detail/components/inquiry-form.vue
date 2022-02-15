@@ -173,6 +173,10 @@ export default {
           pin: this.$route.params.property,
           message: this.message,
         };
+        let realtorID = this.$cookies.get("realtor-id");
+        if (realtorID) {
+          data.realtorid = realtorID;
+        }
         this.apiPost(this.ROUTES.requestSale, data)
           .then((res) => {
             const { success } = res.data;
