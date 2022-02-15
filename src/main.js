@@ -7,6 +7,7 @@ import innerLoader from "@/layouts/components/inner-loader";
 import BootstrapVue from "bootstrap-vue";
 import Notifications from "vue-notification";
 import VueCookies from "vue-cookies";
+import VueMeta from "vue-meta";
 import { Vuelidate } from "vuelidate";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
@@ -26,6 +27,7 @@ Vue.use(BootstrapVue);
 Vue.use(Vuelidate);
 Vue.use(Notifications);
 Vue.use(VueCookies);
+Vue.use(VueMeta);
 Vue.mixin(apiService);
 
 new Vue({

@@ -26,6 +26,32 @@ export default {
     Details,
     InquiryForm,
   },
+  metaInfo() {
+    return {
+      title: `${this.property.title}`,
+      meta: [
+        {
+          name: "description",
+          content: `View ${this.property.description} on Shelta.`,
+        },
+        { property: "og:title", content: this.property.title },
+        { property: "og:site_name", content: "Sales Shelta" },
+        {
+          property: "og:description",
+          content: `View ${this.property.description} on Shelta.`,
+        },
+        { property: "og:type", content: "Apartment" },
+        {
+          property: "og:url",
+          content: `https://sales.myshelta.com/property-details/${this.property.pin}`,
+        },
+        {
+          property: "og:image",
+          content: this.property.oneimageurl,
+        },
+      ],
+    };
+  },
   data() {
     return {
       property: {},
